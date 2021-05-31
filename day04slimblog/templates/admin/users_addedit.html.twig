@@ -1,0 +1,24 @@
+{% extends "admin/master.html.twig" %}
+
+{% block title %}Update user information{% endblock %}
+
+{% block content %}
+    <h3>Update user information</h3>
+
+    {% if errorList %}
+        <ul class="errorMessage">
+        {% for error in errorList %}
+            <li>{{error}}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+        <form method="post">
+            User name: <input type="text" name="name" value="{{ v.name }}"><br>
+            Email: <input type="text" name="email" value="{{ v.email }}"><br>
+            {% if op == 'edit' %}<p>(Only provide password if you're changing it for this user)</p>{% endif %}
+            Password <input type="password" name="pass1"><br>
+            Password (repeated) <input type="password" name="pass2"><br>
+            Is admin? <input type="checkbox" name="isAdmin" value="1" {% if v.isAdmin %}checked{% endif %}><br>
+            <input type="submit" value="{% if op == 'edit' %}Update user data{% else %}Add user{% endif %}">
+        </form>
+{% endblock %}

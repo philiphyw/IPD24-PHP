@@ -1,0 +1,42 @@
+{% extends "master.html.twig" %}
+
+{% block title %}Register{% endblock %}
+
+{% block head %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // alert("jQuery works");
+            $('input[name=email]').on('paste blur change input', function() {
+                var email = $('input[name=email]').val();
+                $("#emailTaken").load("/isemailtaken/" + email);
+            });
+
+            $(document).ajaxError(function(event, jqxhr, settings, thrownError) {
+                console.log("Ajax error occured on " + settings.url);
+                alert("Ajax error occured");
+            });
+
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    {% if errorList %}
+        <ul class="errorMessage">
+        {% for error in errorList %}
+            <li>{{error}}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+        <form method="post" enctype="multipart/form-data">
+            User name: <input type="text" name="name" value="{{ v.name }}"><br>
+            Email: <input type="text" name="email" value="{{ v.email }}">
+            <span class="errorMessage" id="emailTaken"></span><br>
+            Password <input type="password" name="pass1"><br>
+            Password (repeated) <input type="password" name="pass2"><br>
+            Image: <input type="file" name="image"/><br>
+            <input type="submit" value="Register">
+        </form>
+{% endblock %}

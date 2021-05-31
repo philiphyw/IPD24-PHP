@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>        
+        <link rel="stylesheet" href="/styles.css" />
+        <title>{% block title %}{% endblock %} - My Webpage</title>
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <div id="centeredContent">
+        <div id="contentHeader">
+            {% if userSession %}
+                <span>You are logged in as <b>{{ userSession.name }}</b>.
+                    You can <a href="/addarticle">post a new article</a>
+                    or <a href="/logout">Logout</a>.</span>
+                {% if userSession.isAdmin %}
+                    <span><a href="/admin">Access Admin Interface</a></span>
+                {% endif %}
+            {% else %}
+                <a href="/login">Login</a> or <a href="/register">Register</a>
+            {% endif %}
+        </div>
+        {% if flashMessage %}
+        <div id="flashMessage">{{flashMessage}}</div>
+        {% endif %}        
+        {% block content %}{% endblock %}
+        <div id="footer">
+            {% block footer %}
+                <br>&copy; Copyright 2021 by <a href="http://domain.invalid/">IPD24</a>.
+            {% endblock %}
+        </div>
+        </div>
+    </body>
+</html>

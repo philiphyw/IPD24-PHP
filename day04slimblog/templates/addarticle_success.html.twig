@@ -1,0 +1,25 @@
+{% extends "master.html.twig" %}
+
+{% block title %}Article added{% endblock %}
+
+{% block head %}
+    <script>
+
+    // Example of redirection with visual countdown
+    var secsLeft = 5;
+    setInterval(function() {
+        document.getElementById("countdown").innerHTML = secsLeft + "";
+        secsLeft--;
+        if (secsLeft < 0) {
+            window.location.href = "/"; // destination
+        }
+    }, 1000);
+
+    </script>
+{% endblock %}
+
+{% block content %}
+    <p>Article added</p>
+    <p><a href="/article/{{id}}">Click to view the new article</a>. 
+    You will be automatically redirected in <span id="countdown">5</span> seconds.</p>
+{% endblock %}

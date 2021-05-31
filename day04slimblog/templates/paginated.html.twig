@@ -1,0 +1,26 @@
+{% extends "master.html.twig" %}
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+    <div class="articlePreviewBox">
+    {% for a in list %}
+        <div class="articleBox">
+            <h2><a href="/article/{{a.id}}">{{a.title}}</a></h2>
+            <i>Posted by {{a.name}} on {{a.postedDate}} </i>                
+            <div class="articleBody">{{a.body}}</div>
+        </div>
+    {% endfor %}
+    </div>
+    <div class="pageNavigation">
+    {% if prevNo %}<a href="/paginated/{{prevNo}}">Previous</a>{% endif %}
+    {% for no in 1 .. maxPages %}
+        {% if no == pageNo %}
+            <b>{{no}}</b>
+        {% else %}
+            <a href="/paginated/{{no}}">{{no}}</a>
+        {% endif %}
+    {% endfor %}
+    {% if nextNo %}<a href="/paginated/{{nextNo}}">Next</a>{% endif %}
+    </div>
+{% endblock %}

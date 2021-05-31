@@ -1,0 +1,15 @@
+{% extends "master.html.twig" %}
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+    <div class="articlePreviewBox">
+    {% for a in list %}
+        <div class="articleBox">
+            <h2><a href="/article/{{a.id}}">{{a.title}}</a></h2>
+            <i>Posted by {{a.name}} on {{a.postedDate}} </i>                
+            <div class="articleBody">{{a.body}}</div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

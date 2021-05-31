@@ -1,0 +1,34 @@
+{% extends "master.html.twig" %}
+
+{% block title %}{{a.title}}{% endblock %}
+
+{% block content %}
+    <div class="articleBox">
+        <h2>{{a.title}}</h2>
+        <i>Posted by {{a.name}} on {{a.postedDate}} </i>
+        {% if a.imagePath %}
+            <div><img src="/uploads/{{a.imagePath}}" width="150"></div>                
+        {% endif %}
+        <div class="articleBody">{{a.body | raw }}</div>
+        {% if userSession %}
+        <hr>
+        <div class="commentForm">
+            <form method="post">
+            Add your comment: <textarea name="body">{{v.body}}</textarea><br>
+            <input type="submit" value="Add comment">
+            </form>
+        </div>
+        {% endif %}
+        <hr>
+        <div class="articleComments">
+            {% for c in commentsList %}
+            <div class="commentItem">
+                <span class="commentAuthorInfo">{{c.authorName}} said on {{c.postedDate}}:</span>
+                <div class="commentBody">{{c.body}}</div>
+            </div>
+            <br>
+            {% endfor %}
+        </ul>
+        </div>
+    </div>
+{% endblock %}

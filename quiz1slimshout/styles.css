@@ -1,0 +1,42 @@
+body {
+    background-color: lightgray;
+    margin: 0;
+    padding: 0;
+}
+
+
+a{
+    text-decoration: none;
+    color:white;
+}
+
+#centeredContent {
+    margin: 0 auto;
+    padding: 20px;
+    width: 500px; /* 960px; */
+    background-color: white;
+}
+
+.errorMessage {
+    font-weight: bold;
+    background-color: yellow;
+    color: red;
+}
+
+.pageNavigation b { /* current page number */
+    background-color: chartreuse; 
+}
+
+#flashMessage {
+    background-color: chartreuse;
+    width: auto;
+}
+
+.articleBox{
+    margin-top: 20;
+   
+}
+
+#footer{
+    bottom: 2rem;
+}

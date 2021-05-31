@@ -1,0 +1,39 @@
+{% extends "master.html.twig" %}
+
+{% block content %}
+  
+        <div class="articleBox">
+            {% if userSession %}
+            <div><h3><a href="/shouts/add">Add Shout</a></h3></div>
+            {% endif %}
+            <table>
+
+
+                <thead>
+                    <tr>
+                        <th>Shout ID</th>
+                        <th>Author Name</th>
+                        <th>Avatar</th>
+                        <th>Message</th>
+                       
+                    </tr>
+                </thead>
+                
+                <tbody>
+                {% for a in list %}
+                        <tr>
+                            <td>{{a.id}}</td>
+                            <td>{{a.username}}</td>
+                           <td><img src="{{a.fullimgPath}}"  height="80"> </td>
+                           {# <td>{{a.fullimgPath}}</td>  #}
+                            <td>{{a.message}}</td>
+                            
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+
+
+
+{% endblock content %}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>        
+        <link rel="stylesheet" href="/styles.css" />
+        <title>{% block title %}{% endblock %} - quiz1slimshout - Yaowu (Philip) Huang</title>
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <div id="centeredContent">
+        <div id="contentHeader" style="margin:0;padding:0;background-color: darkblue; color:ghostwhite;">
+            {% if userSession %}
+                <span>You are logged in as <b>{{ userSession.username }}</b>.
+                    <a href="/logout" style="color: ghostwhite;">Logout</a>.</span>&nbsp; 
+               
+            {% else %}
+                <a href="/login" style="color: ghostwhite;">Login</a>&nbsp;  or <a style="color: ghostwhite;" href="/register">Register</a>&nbsp; 
+            {% endif %}
+            <a href="/shouts/list" style="color: ghostwhite;">Shouts List</a></span>    
+        </div>
+        {% if flashMessage %}
+        <div id="flashMessage">{{flashMessage}}</div>
+        {% endif %}
+        {% block content %}{% endblock %}
+        <div id="footer">
+            {% block footer %}
+                <br>&copy; Copyright 2021 by Yaowu(Philip) Huang
+            {% endblock %}
+        </div>
+        </div>
+        {% block tail %}{% endblock %}
+    </body>
+</html>

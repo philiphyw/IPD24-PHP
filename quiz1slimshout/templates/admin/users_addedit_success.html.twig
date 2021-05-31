@@ -1,0 +1,8 @@
+{% extends "admin/master.html.twig" %}
+
+{% block title %}Operation successful{% endblock %}
+
+{% block content %}
+    <p>Operation successful - user {% if op == 'add' %}added{% else %}updated{% endif %}</p>
+    <p><a href="/admin/users/list">Click here to continue</a></p>
+{% endblock %}

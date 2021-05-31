@@ -1,0 +1,25 @@
+{% extends "master.html.twig" %}
+
+{% block title %}Shout added{% endblock %}
+
+{% block head %}
+    <script>
+
+    // Example of redirection with visual countdown
+    var secsLeft = 3;
+    setInterval(function() {
+        document.getElementById("countdown").innerHTML = secsLeft + "";
+        secsLeft--;
+        if (secsLeft < 0) {
+            window.location.href = "/shouts/list"; // destination
+        }
+    }, 1000);
+
+    </script>
+{% endblock %}
+
+{% block content %}
+    <p>Article added</p>
+    <p><a href="/shouts/list/">Click to view the new shout</a>. 
+    You will be automatically redirected in <span id="countdown">3</span> seconds.</p>
+{% endblock %}

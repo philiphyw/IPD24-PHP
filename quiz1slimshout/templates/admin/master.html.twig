@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>        
+        <link rel="stylesheet" href="/styles.css" />
+        <title>{% block title %}{% endblock %} - Admin interface</title>
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <div id="centeredContent">
+        <h1>Admin interface</h1>
+        {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>
